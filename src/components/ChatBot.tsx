@@ -179,7 +179,7 @@ const ChatBot = ({ isOpen, onClose, onMaximizeChange }: ChatBotProps) => {
             onChange={(e) => setInputValue(e.target.value)}
             onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
             placeholder="Type your message..."
-            className="w-full px-4 py-2 pr-10 bg-gray-100 rounded-full focus:outline-none text-sm"
+            className="w-full px-4 py-2 pr-10 bg-gray-100 rounded-full focus:outline-none text-sm min-h-[42px]"
           />
           <Button 
             variant="ghost" 
