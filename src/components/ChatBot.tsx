@@ -105,7 +105,7 @@ const ChatBot = ({ isOpen, onClose }: ChatBotProps) => {
     <div 
       className={`fixed bg-white rounded-lg shadow-lg overflow-hidden border z-50 transition-all duration-300 ease-in-out ${
         isMaximized 
-          ? 'inset-0 m-0 rounded-none' 
+          ? 'right-0 bottom-0 top-0 w-96 md:w-[400px] lg:w-[450px] m-0 rounded-l-lg rounded-r-none' 
           : 'right-6 bottom-6 w-80'
       }`}
     >
