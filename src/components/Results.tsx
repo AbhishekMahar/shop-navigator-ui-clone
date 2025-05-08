@@ -15,6 +15,10 @@ type Product = {
   discount?: string;
 };
 
+interface ResultsProps {
+  isChatMaximized?: boolean;
+}
+
 const ProductCard = ({ product }: { product: Product }) => {
   return (
     <div className="relative bg-white rounded-lg overflow-hidden">
@@ -66,7 +70,7 @@ const ProductCard = ({ product }: { product: Product }) => {
   );
 };
 
-const Results = () => {
+const Results: React.FC<ResultsProps> = ({ isChatMaximized = false }) => {
   const products: Product[] = [
     {
       id: 1,
@@ -128,9 +132,13 @@ const Results = () => {
   ];
 
   return (
-    <div className="px-6 py-2">
+    <div className={`px-6 py-2 transition-all duration-300 ${isChatMaximized ? 'mr-[380px]' : ''}`}>
       <h2 className="text-lg font-medium mb-4">Results</h2>
-      <div className="product-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 pb-6">
+      <div className={`product-grid grid gap-4 pb-6 ${
+        isChatMaximized 
+          ? 'grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5' 
+          : 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6'
+      }`}>
         {products.map(product => (
           <ProductCard key={product.id} product={product} />
         ))}

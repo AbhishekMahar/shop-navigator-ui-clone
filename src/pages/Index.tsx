@@ -55,9 +55,7 @@ const Index = () => {
       <Filters />
       <div className="max-w-[1800px] mx-auto transition-all duration-300">
         <RelatedShops isChatMaximized={isChatMaximized} />
-        <div className={`transition-all duration-300 ${isChatMaximized ? 'mr-[380px]' : ''}`}>
-          <Results />
-        </div>
+        <Results isChatMaximized={isChatMaximized} />
       </div>
       
       <ChatBot 
