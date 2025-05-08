@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import { ChevronDown, ArrowDownUp, Filter } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Toggle } from "@/components/ui/toggle";
+import { Slider } from "@/components/ui/slider";
 import { 
   DropdownMenu, 
   DropdownMenuTrigger, 
@@ -50,6 +52,8 @@ const FilterItem = ({
 
 const Filters = () => {
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
+  const [isOnSale, setIsOnSale] = useState(true);
+  const [priceRange, setPriceRange] = useState([50]);
 
   return (
     <>
@@ -66,7 +70,16 @@ const Filters = () => {
           
           <FilterItem label="Category" />
           
-          <FilterItem label="On sale" hasChevron={false} isActive />
+          {/* Changed to Toggle button instead of FilterItem */}
+          <Toggle 
+            pressed={isOnSale}
+            onPressedChange={setIsOnSale}
+            variant="outline"
+            size="sm"
+            className={`border-gray-300 ${isOnSale ? 'bg-gray-100' : 'bg-white'}`}
+          >
+            On sale
+          </Toggle>
           
           <FilterItem label="Ratings" />
           
@@ -79,13 +92,15 @@ const Filters = () => {
           <FilterItem label="Color" />
           
           <div className="flex items-center gap-2">
-            <span className="text-sm">Price $0</span>
-            <div className="w-24 h-4 bg-gray-200 rounded-full overflow-hidden relative">
-              <div className="absolute top-0 bottom-0 left-0 right-0 flex items-center px-1">
-                <div className="w-full h-0.5 bg-shop-purple rounded-full relative">
-                  <div className="absolute w-2 h-2 rounded-full bg-shop-purple -top-[3px] left-1/2"></div>
-                </div>
-              </div>
+            <span className="text-sm">Price ${priceRange[0] * 12}</span>
+            <div className="w-24 h-4 relative">
+              <Slider 
+                defaultValue={[50]} 
+                max={100} 
+                step={1} 
+                value={priceRange}
+                onValueChange={setPriceRange}
+              />
             </div>
           </div>
           
