@@ -34,7 +34,7 @@ const Header = ({ toggleChat }: HeaderProps) => {
   };
 
   return (
-    <header className="flex items-center justify-between px-6 py-4 bg-shop-darkPurple border-b">
+    <header className="flex items-center justify-between px-6 py-4 bg-shop-darkPurple border-b fixed top-0 left-0 right-0 z-50">
       <div className="flex items-center gap-8">
         <a href="/" className="text-shop-purple text-2xl font-bold font-sans">shop</a>
         <nav className="flex gap-6">

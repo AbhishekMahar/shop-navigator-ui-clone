@@ -82,6 +82,11 @@
   body {
     @apply bg-background text-foreground font-sans;
   }
+  
+  /* Apply Inter font family globally */
+  html {
+    font-family: 'Inter', sans-serif;
+  }
 }
 
 /* Define animation keyframes */
