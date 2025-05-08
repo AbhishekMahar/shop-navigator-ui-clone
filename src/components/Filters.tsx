@@ -62,8 +62,9 @@ const Filters = () => {
 
   return (
     <>
+      {/* Modified this container to improve centering */}
       <div className="w-full flex justify-center">
-        <div className="filters-container max-w-[1800px] w-full flex items-center gap-3 py-4 overflow-x-auto">
+        <div className="filters-container w-full max-w-[1200px] flex items-center justify-center gap-3 py-4 overflow-x-auto">
           <Button 
             variant="outline" 
             size="icon" 
