@@ -79,7 +79,9 @@ const ChatBot = ({ isOpen, onClose }: ChatBotProps) => {
     }, 800);
   };
 
-  if (!isOpen) return null;
+  if (!isOpen) {
+    return null;
+  }
 
   return (
     <div className="fixed right-6 bottom-6 w-80 bg-white rounded-lg shadow-lg overflow-hidden border z-50">

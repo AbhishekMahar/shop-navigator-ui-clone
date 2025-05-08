@@ -11,6 +11,11 @@ import { Button } from "@/components/ui/button";
 const Index = () => {
   const [isChatOpen, setIsChatOpen] = useState(false);
 
+  const toggleChat = () => {
+    setIsChatOpen(prevState => !prevState);
+    console.log("Chat toggle clicked, new state:", !isChatOpen);
+  };
+
   return (
     <div className="min-h-screen bg-white">
       <Header />
@@ -20,12 +25,12 @@ const Index = () => {
         <Results />
       </div>
       
-      {isChatOpen && <ChatBot isOpen={isChatOpen} onClose={() => setIsChatOpen(false)} />}
+      <ChatBot isOpen={isChatOpen} onClose={() => setIsChatOpen(false)} />
       
       {!isChatOpen && (
         <Button 
           className="fixed right-6 bottom-6 h-12 w-12 bg-shop-purple hover:bg-shop-purple/90 rounded-full shadow-lg flex items-center justify-center"
-          onClick={() => setIsChatOpen(true)}
+          onClick={toggleChat}
         >
           <MessagesSquare className="h-6 w-6" />
         </Button>
