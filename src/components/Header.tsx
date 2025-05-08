@@ -34,12 +34,12 @@ const Header = ({ toggleChat }: HeaderProps) => {
   };
 
   return (
-    <header className="flex items-center justify-between px-6 py-4 bg-white border-b">
+    <header className="flex items-center justify-between px-6 py-4 bg-shop-darkPurple border-b">
       <div className="flex items-center gap-8">
-        <a href="/" className="text-shop-purple text-2xl font-bold">shop</a>
+        <a href="/" className="text-shop-purple text-2xl font-bold font-sans">shop</a>
         <nav className="flex gap-6">
-          <a href="/" className="text-gray-700 hover:text-shop-purple">Home</a>
-          <a href="/explore" className="text-gray-700 hover:text-shop-purple">Explore</a>
+          <a href="/" className="text-white hover:text-shop-purple">Home</a>
+          <a href="/explore" className="text-white hover:text-shop-purple">Explore</a>
         </nav>
       </div>
       
@@ -87,19 +87,19 @@ const Header = ({ toggleChat }: HeaderProps) => {
         <Button 
           variant="ghost" 
           size="icon" 
-          className="rounded-full"
+          className="rounded-full hover:bg-white/10"
           onClick={toggleChat}
         >
           <MessagesSquare className="h-6 w-6 text-shop-purple" />
         </Button>
-        <Button variant="ghost" size="icon" className="rounded-full">
+        <Button variant="ghost" size="icon" className="rounded-full hover:bg-white/10">
           <Heart className="h-6 w-6 text-shop-purple" />
         </Button>
-        <Button variant="ghost" size="icon" className="rounded-full">
+        <Button variant="ghost" size="icon" className="rounded-full hover:bg-white/10">
           <ShoppingCart className="h-6 w-6 text-shop-purple" />
         </Button>
         <Button 
-          className="bg-shop-purple text-white hover:bg-shop-purple/90 rounded-full px-6 py-1 h-9"
+          className="bg-shop-purple hover:bg-shop-purple/90 text-white rounded-full px-6 py-1 h-9"
         >
           Sign in
         </Button>

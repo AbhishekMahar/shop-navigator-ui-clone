@@ -143,13 +143,13 @@ const ChatBot = ({ isOpen, onClose, onMaximizeChange }: ChatBotProps) => {
           : 'right-6 bottom-6 w-80'
       }`}
     >
-      <div className="p-4 bg-white border-b flex justify-between items-center">
+      <div className="p-4 bg-shop-darkPurple border-b flex justify-between items-center">
         <h3 className="font-medium text-shop-purple">Shop AI</h3>
         <div className="flex items-center gap-2">
-          <Button variant="ghost" size="icon" onClick={toggleMaximize} className="h-6 w-6 hover:bg-shop-purple/10">
+          <Button variant="ghost" size="icon" onClick={toggleMaximize} className="h-6 w-6 hover:bg-white/10">
             {isMaximized ? <Minimize className="h-4 w-4 text-shop-purple" /> : <Maximize className="h-4 w-4 text-shop-purple" />}
           </Button>
-          <Button variant="ghost" size="icon" onClick={onClose} className="h-6 w-6 hover:bg-shop-purple/10">
+          <Button variant="ghost" size="icon" onClick={onClose} className="h-6 w-6 hover:bg-white/10">
             <X className="h-4 w-4 text-shop-purple" />
           </Button>
         </div>

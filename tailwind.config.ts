@@ -58,6 +58,7 @@ export default {
 				},
 				shop: {
 					purple: '#9b87f5',
+					darkPurple: '#1A1F2C',
 					lightGray: '#f5f5f5',
 					gray: '#e5e5e5',
 					darkGray: '#6b7280',
