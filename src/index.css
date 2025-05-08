@@ -105,6 +105,18 @@
 body.chatbot-maximized .max-w-\[1800px\] {
   margin-right: 380px;
   width: calc(100% - 380px);
+  transition: all 0.3s ease;
+}
+
+/* Adjust product grid layout when chatbot is maximized */
+body.chatbot-maximized .product-grid {
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+@media (max-width: 1400px) {
+  body.chatbot-maximized .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  }
 }
 
 @media (max-width: 768px) {

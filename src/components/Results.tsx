@@ -130,7 +130,7 @@ const Results = () => {
   return (
     <div className="px-6 py-2">
       <h2 className="text-lg font-medium mb-4">Results</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 pb-6">
+      <div className="product-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 pb-6">
         {products.map(product => (
           <ProductCard key={product.id} product={product} />
         ))}
