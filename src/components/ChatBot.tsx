@@ -161,7 +161,7 @@ const ChatBot = ({ isOpen, onClose, onMaximizeChange }: ChatBotProps) => {
         ))}
       </div>
       
-      <div className={`${isMaximized ? 'p-3 pb-4' : 'p-4'} border-t bg-white`}>
+      <div className={`${isMaximized ? 'p-3 pb-2' : 'p-4'} border-t bg-white`}>
         {/* Reduced to only 3 suggestions that fit in one line */}
         <div className={`flex gap-2 ${isMaximized ? 'mb-2' : 'mb-3'}`}>
           {suggestions.map((suggestion, index) => (
