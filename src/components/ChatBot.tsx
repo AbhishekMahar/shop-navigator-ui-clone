@@ -28,7 +28,7 @@ const Message = ({ message }: { message: MessageType }) => {
   return (
     <div className={`flex mb-4 ${message.sender === 'bot' ? 'justify-start' : 'justify-end'}`}>
       {message.sender === 'bot' && (
-        <div className="h-8 w-8 rounded-full bg-[#9b87f5] text-white flex items-center justify-center mr-2">
+        <div className="h-8 w-8 rounded-full bg-shop-purple text-white flex items-center justify-center mr-2">
           <Bot className="h-4 w-4" />
         </div>
       )}
@@ -36,7 +36,7 @@ const Message = ({ message }: { message: MessageType }) => {
         <div className={`p-3 rounded-lg ${
           message.sender === 'bot' 
             ? 'bg-gray-100 text-black' 
-            : 'bg-[#9b87f5] text-white'
+            : 'bg-shop-purple text-white'
         }`}>
           <p className="text-sm">{message.text}</p>
         </div>
@@ -139,18 +139,18 @@ const ChatBot = ({ isOpen, onClose, onMaximizeChange }: ChatBotProps) => {
     <div 
       className={`fixed bg-white rounded-lg shadow-lg overflow-hidden border z-50 transition-all duration-300 ease-in-out ${
         isMaximized 
-          ? 'right-0 top-[72px] bottom-0 w-[380px] border-l-2 border-[#9b87f5]/20 rounded-none' 
+          ? 'right-0 top-[72px] bottom-0 w-[380px] border-l-2 border-shop-purple/20 rounded-none' 
           : 'right-6 bottom-6 w-80'
       }`}
     >
       <div className="p-4 bg-white border-b flex justify-between items-center">
-        <h3 className="font-medium text-[#7e69ab]">Shop AI</h3>
+        <h3 className="font-medium text-shop-purple">Shop AI</h3>
         <div className="flex items-center gap-2">
-          <Button variant="ghost" size="icon" onClick={toggleMaximize} className="h-6 w-6 hover:bg-[#9b87f5]/10">
-            {isMaximized ? <Minimize className="h-4 w-4 text-[#9b87f5]" /> : <Maximize className="h-4 w-4 text-[#9b87f5]" />}
+          <Button variant="ghost" size="icon" onClick={toggleMaximize} className="h-6 w-6 hover:bg-shop-purple/10">
+            {isMaximized ? <Minimize className="h-4 w-4 text-shop-purple" /> : <Maximize className="h-4 w-4 text-shop-purple" />}
           </Button>
-          <Button variant="ghost" size="icon" onClick={onClose} className="h-6 w-6 hover:bg-[#9b87f5]/10">
-            <X className="h-4 w-4 text-[#9b87f5]" />
+          <Button variant="ghost" size="icon" onClick={onClose} className="h-6 w-6 hover:bg-shop-purple/10">
+            <X className="h-4 w-4 text-shop-purple" />
           </Button>
         </div>
       </div>
@@ -189,7 +189,7 @@ const ChatBot = ({ isOpen, onClose, onMaximizeChange }: ChatBotProps) => {
             onClick={handleSendMessage} 
             className="absolute right-1 h-7 w-7"
           >
-            <Send className="h-4 w-4 text-[#9b87f5]" />
+            <Send className="h-4 w-4 text-shop-purple" />
           </Button>
         </div>
       </div>

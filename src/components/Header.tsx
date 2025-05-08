@@ -45,7 +45,7 @@ const Header = ({ toggleChat }: HeaderProps) => {
       
       <div className="relative flex-1 max-w-xl mx-8">
         <div className="relative">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
           <Input 
             ref={inputRef}
             type="text" 
@@ -90,15 +90,19 @@ const Header = ({ toggleChat }: HeaderProps) => {
           className="rounded-full"
           onClick={toggleChat}
         >
-          <MessagesSquare className="h-5 w-5" />
+          <MessagesSquare className="h-6 w-6 text-shop-purple" />
         </Button>
         <Button variant="ghost" size="icon" className="rounded-full">
-          <Heart className="h-5 w-5" />
+          <Heart className="h-6 w-6 text-shop-purple" />
         </Button>
         <Button variant="ghost" size="icon" className="rounded-full">
-          <ShoppingCart className="h-5 w-5" />
+          <ShoppingCart className="h-6 w-6 text-shop-purple" />
         </Button>
-        <Button variant="link" className="text-black">Sign in</Button>
+        <Button 
+          className="bg-shop-purple text-white hover:bg-shop-purple/90 rounded-full px-6 py-1 h-9"
+        >
+          Sign in
+        </Button>
       </div>
     </header>
   );

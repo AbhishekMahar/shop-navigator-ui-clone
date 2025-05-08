@@ -19,6 +19,9 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				sans: ['Inter', 'sans-serif'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -54,7 +57,7 @@ export default {
 					foreground: 'hsl(var(--card-foreground))'
 				},
 				shop: {
-					purple: '#7e22ce',
+					purple: '#9b87f5',
 					lightGray: '#f5f5f5',
 					gray: '#e5e5e5',
 					darkGray: '#6b7280',
