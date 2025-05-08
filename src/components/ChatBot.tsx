@@ -19,14 +19,14 @@ const Message = ({ message }: { message: MessageType }) => {
   return (
     <div className={`flex mb-4 ${message.sender === 'bot' ? 'justify-start' : 'justify-end'}`}>
       {message.sender === 'bot' && (
-        <div className="h-8 w-8 rounded-full bg-shop-purple text-white flex items-center justify-center mr-2">
+        <div className="h-8 w-8 rounded-full bg-[#9b87f5] text-white flex items-center justify-center mr-2">
           <Bot className="h-4 w-4" />
         </div>
       )}
       <div className={`max-w-xs p-3 rounded-lg ${
         message.sender === 'bot' 
           ? 'bg-gray-100 text-black' 
-          : 'bg-shop-purple text-white'
+          : 'bg-[#9b87f5] text-white'
       }`}>
         <p className="text-sm">{message.text}</p>
       </div>
@@ -57,6 +57,19 @@ const ChatBot = ({ isOpen, onClose }: ChatBotProps) => {
       setVisible(false);
     }
   }, [isOpen]);
+
+  // Use an effect to handle body class when maximized
+  useEffect(() => {
+    if (isMaximized) {
+      document.body.classList.add('chatbot-maximized');
+    } else {
+      document.body.classList.remove('chatbot-maximized');
+    }
+    
+    return () => {
+      document.body.classList.remove('chatbot-maximized');
+    };
+  }, [isMaximized]);
 
   const handleSendMessage = () => {
     if (!inputValue.trim()) return;
@@ -105,18 +118,18 @@ const ChatBot = ({ isOpen, onClose }: ChatBotProps) => {
     <div 
       className={`fixed bg-white rounded-lg shadow-lg overflow-hidden border z-50 transition-all duration-300 ease-in-out ${
         isMaximized 
-          ? 'right-0 bottom-0 top-0 w-96 md:w-[400px] lg:w-[450px] m-0 rounded-l-lg rounded-r-none' 
+          ? 'right-0 bottom-0 top-0 w-[380px] border-l-2 border-[#9b87f5]/20 rounded-none' 
           : 'right-6 bottom-6 w-80'
       }`}
     >
       <div className="p-4 bg-white border-b flex justify-between items-center">
-        <h3 className="font-medium">Shop AI</h3>
+        <h3 className="font-medium text-[#7e69ab]">Shop AI</h3>
         <div className="flex items-center gap-2">
-          <Button variant="ghost" size="icon" onClick={toggleMaximize} className="h-6 w-6">
-            {isMaximized ? <Minimize className="h-4 w-4" /> : <Maximize className="h-4 w-4" />}
+          <Button variant="ghost" size="icon" onClick={toggleMaximize} className="h-6 w-6 hover:bg-[#9b87f5]/10">
+            {isMaximized ? <Minimize className="h-4 w-4 text-[#9b87f5]" /> : <Maximize className="h-4 w-4 text-[#9b87f5]" />}
           </Button>
-          <Button variant="ghost" size="icon" onClick={onClose} className="h-6 w-6">
-            <X className="h-4 w-4" />
+          <Button variant="ghost" size="icon" onClick={onClose} className="h-6 w-6 hover:bg-[#9b87f5]/10">
+            <X className="h-4 w-4 text-[#9b87f5]" />
           </Button>
         </div>
       </div>
@@ -159,14 +172,14 @@ const ChatBot = ({ isOpen, onClose }: ChatBotProps) => {
             onClick={handleSendMessage} 
             className="absolute right-1 h-7 w-7"
           >
-            <Send className="h-4 w-4 text-shop-purple" />
+            <Send className="h-4 w-4 text-[#9b87f5]" />
           </Button>
         </div>
         <div className="flex justify-between mt-2">
-          <Button variant="ghost" size="sm" className="text-xs h-6 text-shop-purple">
+          <Button variant="ghost" size="sm" className="text-xs h-6 text-[#9b87f5]">
             Customize more
           </Button>
-          <Button size="sm" className="text-xs h-6 bg-shop-purple hover:bg-shop-purple/90">
+          <Button size="sm" className="text-xs h-6 bg-[#9b87f5] hover:bg-[#7E69AB]">
             Getting Started
           </Button>
         </div>

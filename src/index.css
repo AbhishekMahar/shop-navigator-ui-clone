@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -97,5 +98,18 @@
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+/* ChatBot Maximized State Adjustments */
+body.chatbot-maximized .max-w-\[1800px\] {
+  margin-right: 380px;
+  width: calc(100% - 380px);
+}
+
+@media (max-width: 768px) {
+  body.chatbot-maximized .max-w-\[1800px\] {
+    margin-right: 0;
+    width: 100%;
   }
 }
