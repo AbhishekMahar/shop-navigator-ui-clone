@@ -57,7 +57,8 @@ const Filters = () => {
   
   // Calculate the maximum price for the dropdown label
   const maxPrice = priceRange[0] * 12;
-  const priceLabel = `$${maxPrice}+`;
+  const isMaxSlider = priceRange[0] === 100;
+  const priceLabel = `$${maxPrice}${isMaxSlider ? '+' : ''}`;
 
   return (
     <>
@@ -95,8 +96,8 @@ const Filters = () => {
           <FilterItem label="Color" />
           
           <div className="flex items-center gap-2">
-            <span className="text-sm">Price ${maxPrice}</span>
-            <div className="w-16 h-4 relative">
+            <span className="text-sm">Price ${maxPrice}{isMaxSlider ? '+' : ''}</span>
+            <div className="w-16 h-4 relative flex items-center">
               <Slider 
                 defaultValue={[50]} 
                 max={100} 
