@@ -8,6 +8,7 @@ import ChatBot from "@/components/ChatBot";
 
 const Index = () => {
   const [isChatOpen, setIsChatOpen] = useState(false);
+  const [isChatMaximized, setIsChatMaximized] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   const toggleChat = () => {
@@ -29,24 +30,39 @@ const Index = () => {
   useEffect(() => {
     console.log("Chat state updated:", isChatOpen);
 
-    // Add or remove class from body based on chat state
-    if (isChatOpen) {
-      document.body.classList.add('chat-open');
-    } else {
+    // Remove class when chat is closed
+    if (!isChatOpen) {
       document.body.classList.remove('chat-open');
+      document.body.classList.remove('chatbot-maximized');
     }
   }, [isChatOpen]);
+
+  // Listen for maximize state changes from the ChatBot
+  const handleMaximizeChange = (isMaximized: boolean) => {
+    setIsChatMaximized(isMaximized);
+    console.log("Chat maximized state updated:", isMaximized);
+    
+    if (isMaximized) {
+      document.body.classList.add('chatbot-maximized');
+    } else {
+      document.body.classList.remove('chatbot-maximized');
+    }
+  };
 
   return (
     <div className="min-h-screen bg-white">
       <Header toggleChat={toggleChat} />
       <Filters />
-      <div className={`max-w-[1800px] mx-auto transition-all duration-300 ${isChatOpen ? 'pr-[380px]' : ''}`}>
+      <div className={`max-w-[1800px] mx-auto transition-all duration-300 ${isChatMaximized ? 'pr-[380px]' : ''}`}>
         <RelatedShops />
         <Results />
       </div>
       
-      <ChatBot isOpen={isChatOpen} onClose={() => setIsChatOpen(false)} />
+      <ChatBot 
+        isOpen={isChatOpen} 
+        onClose={() => setIsChatOpen(false)}
+        onMaximizeChange={handleMaximizeChange}
+      />
     </div>
   );
 };

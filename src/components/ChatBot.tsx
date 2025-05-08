@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { X, Send, Bot, Maximize, Minimize } from 'lucide-react';
 import { Button } from "@/components/ui/button";
@@ -13,6 +12,7 @@ type MessageType = {
 type ChatBotProps = {
   isOpen: boolean;
   onClose: () => void;
+  onMaximizeChange: (isMaximized: boolean) => void;
 };
 
 const Message = ({ message }: { message: MessageType }) => {
@@ -34,7 +34,7 @@ const Message = ({ message }: { message: MessageType }) => {
   );
 };
 
-const ChatBot = ({ isOpen, onClose }: ChatBotProps) => {
+const ChatBot = ({ isOpen, onClose, onMaximizeChange }: ChatBotProps) => {
   const [visible, setVisible] = useState(false);
   const [isMaximized, setIsMaximized] = useState(false);
   const [messages, setMessages] = useState<MessageType[]>([
@@ -55,21 +55,15 @@ const ChatBot = ({ isOpen, onClose }: ChatBotProps) => {
     } else {
       console.log("ChatBot is now hidden");
       setVisible(false);
+      setIsMaximized(false); // Reset maximized state when closing
+      onMaximizeChange(false); // Notify parent that chatbot is not maximized
     }
-  }, [isOpen]);
+  }, [isOpen, onMaximizeChange]);
 
-  // Use an effect to handle body class when maximized
+  // Use an effect to notify parent component when maximized state changes
   useEffect(() => {
-    if (isMaximized) {
-      document.body.classList.add('chatbot-maximized');
-    } else {
-      document.body.classList.remove('chatbot-maximized');
-    }
-    
-    return () => {
-      document.body.classList.remove('chatbot-maximized');
-    };
-  }, [isMaximized]);
+    onMaximizeChange(isMaximized);
+  }, [isMaximized, onMaximizeChange]);
 
   const handleSendMessage = () => {
     if (!inputValue.trim()) return;
