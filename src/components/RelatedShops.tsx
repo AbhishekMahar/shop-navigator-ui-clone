@@ -43,7 +43,7 @@ const RelatedShops: React.FC<RelatedShopsProps> = ({ isChatMaximized = false }) 
   ];
 
   return (
-    <div className={`px-6 py-4 transition-all duration-300 ${isChatMaximized ? 'mr-[380px]' : ''}`}>
+    <div className={`px-6 py-4 ${isChatMaximized ? 'mr-[380px]' : ''}`}>
       <h2 className="text-lg font-medium mb-4">Related Shops</h2>
       <Carousel
         opts={{

@@ -53,7 +53,7 @@ const Index = () => {
     <div className="min-h-screen bg-white">
       <Header toggleChat={toggleChat} />
       <Filters />
-      <div className="max-w-[1800px] mx-auto transition-all duration-300">
+      <div className="max-w-[1800px] mx-auto">
         <RelatedShops isChatMaximized={isChatMaximized} />
         <Results isChatMaximized={isChatMaximized} />
       </div>

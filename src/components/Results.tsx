@@ -93,7 +93,7 @@ const Results: React.FC<ResultsProps> = ({ isChatMaximized = false }) => {
     {
       id: 3,
       name: "adidas Adizero EVO SL Mens Running Shoes - White",
-      brand: "Start Fitness",
+      brand: "Adidas Official",
       price: 129.90,
       originalPrice: 220.99,
       rating: 5.0,
@@ -128,6 +128,101 @@ const Results: React.FC<ResultsProps> = ({ isChatMaximized = false }) => {
       reviewCount: 126,
       image: "/placeholder.svg",
       discount: "30% off"
+    },
+    {
+      id: 7,
+      name: "Air Force 1 '07",
+      brand: "Nike Store",
+      price: 110.00,
+      rating: 4.7,
+      reviewCount: 1245,
+      image: "/placeholder.svg"
+    },
+    {
+      id: 8,
+      name: "Revolution 6 Next Nature",
+      brand: "Nike Store",
+      price: 65.00,
+      rating: 4.5,
+      reviewCount: 872,
+      image: "/placeholder.svg",
+      discount: "15% off"
+    },
+    {
+      id: 9,
+      name: "Superstar Shoes",
+      brand: "Adidas Official",
+      price: 100.00,
+      rating: 4.9,
+      reviewCount: 2156,
+      image: "/placeholder.svg"
+    },
+    {
+      id: 10,
+      name: "UltraBoost 5.0 DNA",
+      brand: "Adidas Official",
+      price: 190.00,
+      originalPrice: 220.00,
+      rating: 4.8,
+      reviewCount: 743,
+      image: "/placeholder.svg",
+      discount: "New"
+    },
+    {
+      id: 11,
+      name: "Suede Classic XXI",
+      brand: "Puma",
+      price: 75.00,
+      rating: 4.6,
+      reviewCount: 512,
+      image: "/placeholder.svg"
+    },
+    {
+      id: 12,
+      name: "Fresh Foam X 1080v12",
+      brand: "New Balance",
+      price: 159.99,
+      rating: 4.7,
+      reviewCount: 329,
+      image: "/placeholder.svg"
+    },
+    {
+      id: 13,
+      name: "HOVR Phantom 2",
+      brand: "Under Armour",
+      price: 140.00,
+      originalPrice: 160.00,
+      rating: 4.5,
+      reviewCount: 187,
+      image: "/placeholder.svg",
+      discount: "Limited"
+    },
+    {
+      id: 14,
+      name: "Classic Leather",
+      brand: "Reebok Shop",
+      price: 80.00,
+      rating: 4.4,
+      reviewCount: 256,
+      image: "/placeholder.svg"
+    },
+    {
+      id: 15,
+      name: "Chuck 70 High Top",
+      brand: "Converse",
+      price: 85.00,
+      rating: 4.8,
+      reviewCount: 412,
+      image: "/placeholder.svg"
+    },
+    {
+      id: 16,
+      name: "Old Skool",
+      brand: "Vans Store",
+      price: 70.00,
+      rating: 4.9,
+      reviewCount: 576,
+      image: "/placeholder.svg"
     }
   ];
 
@@ -136,7 +231,7 @@ const Results: React.FC<ResultsProps> = ({ isChatMaximized = false }) => {
       <h2 className="text-lg font-medium mb-4">Results</h2>
       <div className={`product-grid grid gap-4 pb-6 ${
         isChatMaximized 
-          ? 'grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5' 
+          ? 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4' 
           : 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6'
       }`}>
         {products.map(product => (
