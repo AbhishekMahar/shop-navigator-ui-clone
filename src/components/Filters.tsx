@@ -54,6 +54,10 @@ const Filters = () => {
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
   const [isOnSale, setIsOnSale] = useState(true);
   const [priceRange, setPriceRange] = useState([50]);
+  
+  // Calculate the maximum price for the dropdown label
+  const maxPrice = priceRange[0] * 12;
+  const priceLabel = `$${maxPrice}+`;
 
   return (
     <>
@@ -92,7 +96,7 @@ const Filters = () => {
           <FilterItem label="Color" />
           
           <div className="flex items-center gap-2">
-            <span className="text-sm">Price ${priceRange[0] * 12}</span>
+            <span className="text-sm">Price ${maxPrice}</span>
             <div className="w-24 h-4 relative">
               <Slider 
                 defaultValue={[50]} 
@@ -104,7 +108,7 @@ const Filters = () => {
             </div>
           </div>
           
-          <FilterItem label="$600+" />
+          <FilterItem label={priceLabel} />
           
           <Button variant="outline" size="sm" className="border-gray-300 flex items-center gap-1">
             Sort by <ArrowDownUp className="h-3 w-3 ml-1" />
