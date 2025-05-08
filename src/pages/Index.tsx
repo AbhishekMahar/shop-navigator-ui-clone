@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import Filters from "@/components/Filters";
 import RelatedShops from "@/components/RelatedShops";
@@ -16,6 +16,11 @@ const Index = () => {
     console.log("Chat toggle clicked, new state:", !isChatOpen);
   };
 
+  // Debug log to track state changes
+  useEffect(() => {
+    console.log("Chat state updated:", isChatOpen);
+  }, [isChatOpen]);
+
   return (
     <div className="min-h-screen bg-white">
       <Header />
@@ -27,14 +32,12 @@ const Index = () => {
       
       <ChatBot isOpen={isChatOpen} onClose={() => setIsChatOpen(false)} />
       
-      {!isChatOpen && (
-        <Button 
-          className="fixed right-6 bottom-6 h-12 w-12 bg-shop-purple hover:bg-shop-purple/90 rounded-full shadow-lg flex items-center justify-center"
-          onClick={toggleChat}
-        >
-          <MessagesSquare className="h-6 w-6" />
-        </Button>
-      )}
+      <Button 
+        className="fixed right-6 bottom-6 h-12 w-12 bg-shop-purple hover:bg-shop-purple/90 rounded-full shadow-lg flex items-center justify-center z-40"
+        onClick={toggleChat}
+      >
+        <MessagesSquare className="h-6 w-6" />
+      </Button>
     </div>
   );
 };

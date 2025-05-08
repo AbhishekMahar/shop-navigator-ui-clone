@@ -1,6 +1,6 @@
 
-import React, { useState } from 'react';
-import { X, Send } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { X, Send, Bot } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 
 type MessageType = {
@@ -20,7 +20,7 @@ const Message = ({ message }: { message: MessageType }) => {
     <div className={`flex mb-4 ${message.sender === 'bot' ? 'justify-start' : 'justify-end'}`}>
       {message.sender === 'bot' && (
         <div className="h-8 w-8 rounded-full bg-shop-purple text-white flex items-center justify-center mr-2">
-          AI
+          <Bot className="h-4 w-4" />
         </div>
       )}
       <div className={`max-w-xs p-3 rounded-lg ${
@@ -35,6 +35,7 @@ const Message = ({ message }: { message: MessageType }) => {
 };
 
 const ChatBot = ({ isOpen, onClose }: ChatBotProps) => {
+  const [visible, setVisible] = useState(false);
   const [messages, setMessages] = useState<MessageType[]>([
     {
       id: 1,
@@ -44,6 +45,17 @@ const ChatBot = ({ isOpen, onClose }: ChatBotProps) => {
     }
   ]);
   const [inputValue, setInputValue] = useState('');
+
+  // Use an effect to handle visibility with animation
+  useEffect(() => {
+    if (isOpen) {
+      setVisible(true);
+      console.log("ChatBot is now visible");
+    } else {
+      console.log("ChatBot is now hidden");
+      setVisible(false);
+    }
+  }, [isOpen]);
 
   const handleSendMessage = () => {
     if (!inputValue.trim()) return;
@@ -79,7 +91,7 @@ const ChatBot = ({ isOpen, onClose }: ChatBotProps) => {
     }, 800);
   };
 
-  if (!isOpen) {
+  if (!visible) {
     return null;
   }
 
