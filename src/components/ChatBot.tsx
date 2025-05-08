@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { X, Send, Bot } from 'lucide-react';
+import { X, Send, Bot, Maximize, Minimize } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 
 type MessageType = {
@@ -36,6 +36,7 @@ const Message = ({ message }: { message: MessageType }) => {
 
 const ChatBot = ({ isOpen, onClose }: ChatBotProps) => {
   const [visible, setVisible] = useState(false);
+  const [isMaximized, setIsMaximized] = useState(false);
   const [messages, setMessages] = useState<MessageType[]>([
     {
       id: 1,
@@ -91,20 +92,36 @@ const ChatBot = ({ isOpen, onClose }: ChatBotProps) => {
     }, 800);
   };
 
+  const toggleMaximize = () => {
+    setIsMaximized(prev => !prev);
+    console.log("Chatbot maximized state:", !isMaximized);
+  };
+
   if (!visible) {
     return null;
   }
 
   return (
-    <div className="fixed right-6 bottom-6 w-80 bg-white rounded-lg shadow-lg overflow-hidden border z-50">
+    <div 
+      className={`fixed bg-white rounded-lg shadow-lg overflow-hidden border z-50 transition-all duration-300 ease-in-out ${
+        isMaximized 
+          ? 'inset-0 m-0 rounded-none' 
+          : 'right-6 bottom-6 w-80'
+      }`}
+    >
       <div className="p-4 bg-white border-b flex justify-between items-center">
         <h3 className="font-medium">Shop AI</h3>
-        <Button variant="ghost" size="icon" onClick={onClose} className="h-6 w-6">
-          <X className="h-4 w-4" />
-        </Button>
+        <div className="flex items-center gap-2">
+          <Button variant="ghost" size="icon" onClick={toggleMaximize} className="h-6 w-6">
+            {isMaximized ? <Minimize className="h-4 w-4" /> : <Maximize className="h-4 w-4" />}
+          </Button>
+          <Button variant="ghost" size="icon" onClick={onClose} className="h-6 w-6">
+            <X className="h-4 w-4" />
+          </Button>
+        </div>
       </div>
       
-      <div className="p-4 max-h-96 overflow-y-auto flex flex-col">
+      <div className={`p-4 overflow-y-auto flex flex-col ${isMaximized ? 'h-[calc(100vh-10rem)]' : 'max-h-96'}`}>
         <div className="py-2 px-4 bg-gray-100 rounded-md mb-4">
           <div className="flex items-center">
             <input 

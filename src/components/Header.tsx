@@ -4,7 +4,11 @@ import { Search, MessagesSquare, Heart, ShoppingCart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
-const Header = () => {
+type HeaderProps = {
+  toggleChat: () => void;
+};
+
+const Header = ({ toggleChat }: HeaderProps) => {
   return (
     <header className="flex items-center justify-between px-6 py-4 bg-white border-b">
       <div className="flex items-center gap-8">
@@ -30,7 +34,12 @@ const Header = () => {
       </div>
       
       <div className="flex items-center gap-4">
-        <Button variant="ghost" size="icon" className="rounded-full">
+        <Button 
+          variant="ghost" 
+          size="icon" 
+          className="rounded-full"
+          onClick={toggleChat}
+        >
           <MessagesSquare className="h-5 w-5" />
         </Button>
         <Button variant="ghost" size="icon" className="rounded-full">
