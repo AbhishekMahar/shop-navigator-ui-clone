@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { X, Send, Bot, Maximize, Minimize } from 'lucide-react';
 import { Button } from "@/components/ui/button";
@@ -130,18 +131,8 @@ const ChatBot = ({ isOpen, onClose, onMaximizeChange }: ChatBotProps) => {
       
       <div className={`p-4 overflow-y-auto flex flex-col ${isMaximized ? 'h-[calc(100vh-10rem-72px)]' : 'max-h-96'}`}>
         <div className="py-2 px-4 bg-gray-100 rounded-md mb-4">
-          <div className="flex items-center">
-            <input 
-              type="text" 
-              placeholder="black running sneakers"
-              className="w-full py-1 px-2 text-sm bg-transparent border-none focus:outline-none"
-            />
-            <Button variant="ghost" size="icon" className="h-6 w-6">
-              <X className="h-3 w-3" />
-            </Button>
-          </div>
-          <div className="flex items-center pt-1 text-xs text-gray-500">
-            +4 filters
+          <div className="flex items-center justify-between">
+            <span className="text-sm text-gray-500">+4 filters</span>
           </div>
         </div>
         
