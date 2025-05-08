@@ -74,7 +74,6 @@ const Filters = () => {
           
           <FilterItem label="Category" />
           
-          {/* Changed to Toggle button instead of FilterItem */}
           <Toggle 
             pressed={isOnSale}
             onPressedChange={setIsOnSale}
@@ -97,13 +96,14 @@ const Filters = () => {
           
           <div className="flex items-center gap-2">
             <span className="text-sm">Price ${maxPrice}</span>
-            <div className="w-24 h-4 relative">
+            <div className="w-16 h-4 relative">
               <Slider 
                 defaultValue={[50]} 
                 max={100} 
                 step={1} 
                 value={priceRange}
                 onValueChange={setPriceRange}
+                className="slider-purple"
               />
             </div>
           </div>
