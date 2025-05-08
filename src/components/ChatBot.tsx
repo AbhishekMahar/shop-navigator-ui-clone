@@ -118,7 +118,7 @@ const ChatBot = ({ isOpen, onClose }: ChatBotProps) => {
     <div 
       className={`fixed bg-white rounded-lg shadow-lg overflow-hidden border z-50 transition-all duration-300 ease-in-out ${
         isMaximized 
-          ? 'right-0 bottom-0 top-0 w-[380px] border-l-2 border-[#9b87f5]/20 rounded-none' 
+          ? 'right-0 top-[72px] bottom-0 w-[380px] border-l-2 border-[#9b87f5]/20 rounded-none' 
           : 'right-6 bottom-6 w-80'
       }`}
     >
@@ -134,7 +134,7 @@ const ChatBot = ({ isOpen, onClose }: ChatBotProps) => {
         </div>
       </div>
       
-      <div className={`p-4 overflow-y-auto flex flex-col ${isMaximized ? 'h-[calc(100vh-10rem)]' : 'max-h-96'}`}>
+      <div className={`p-4 overflow-y-auto flex flex-col ${isMaximized ? 'h-[calc(100vh-10rem-72px)]' : 'max-h-96'}`}>
         <div className="py-2 px-4 bg-gray-100 rounded-md mb-4">
           <div className="flex items-center">
             <input 
