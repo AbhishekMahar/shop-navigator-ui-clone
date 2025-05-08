@@ -155,13 +155,13 @@ const ChatBot = ({ isOpen, onClose, onMaximizeChange }: ChatBotProps) => {
         </div>
       </div>
       
-      <div className={`p-4 overflow-y-auto flex flex-col ${isMaximized ? 'h-[calc(100vh-12rem-72px)]' : 'max-h-96'}`}>
+      <div className={`p-4 overflow-y-auto flex flex-col ${isMaximized ? 'h-[calc(100vh-12.5rem-72px)]' : 'max-h-96'}`}>
         {messages.map(message => (
           <Message key={message.id} message={message} />
         ))}
       </div>
       
-      <div className={`${isMaximized ? 'p-3' : 'p-4'} border-t bg-white`}>
+      <div className={`${isMaximized ? 'p-3 pb-4' : 'p-4'} border-t bg-white`}>
         {/* Reduced to only 3 suggestions that fit in one line */}
         <div className={`flex gap-2 ${isMaximized ? 'mb-2' : 'mb-3'}`}>
           {suggestions.map((suggestion, index) => (
