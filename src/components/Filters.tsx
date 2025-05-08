@@ -50,7 +50,7 @@ const FilterItem = ({
 const Filters = () => {
   return (
     <div className="w-full flex justify-center">
-      <div className="filters-container max-w-[1800px] w-full flex items-center justify-start gap-2 py-4 px-6 overflow-x-auto">
+      <div className="filters-container max-w-[1800px] w-full flex items-center gap-2 py-4 px-6 overflow-x-auto">
         <Button variant="outline" size="icon" className="border-gray-300">
           <ArrowDownUp className="h-4 w-4" />
         </Button>
