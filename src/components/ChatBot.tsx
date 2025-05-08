@@ -132,7 +132,8 @@ const ChatBot = ({ isOpen, onClose, onMaximizeChange }: ChatBotProps) => {
     return null;
   }
 
-  const suggestions = ['Sneakers', 'Running shoes', 'Sandals', 'Boots', 'Flip-flops', 'Heels'];
+  // Reduced to only 3 suggestions
+  const suggestions = ['Sneakers', 'Running shoes', 'Boots'];
 
   return (
     <div 
@@ -161,8 +162,8 @@ const ChatBot = ({ isOpen, onClose, onMaximizeChange }: ChatBotProps) => {
       </div>
       
       <div className="p-4 border-t bg-white">
-        {/* Moved suggestion buttons above the input field */}
-        <div className="flex flex-wrap gap-2 mb-3">
+        {/* Reduced to only 3 suggestions that fit in one line */}
+        <div className="flex gap-2 mb-3">
           {suggestions.map((suggestion, index) => (
             <button
               key={index}
