@@ -122,14 +122,14 @@ body.chatbot-maximized .filters-container {
   width: calc(100% - 380px);
   padding-right: 16px;
   margin-right: 0;
-  transition: all 0.3s ease;
+  transform: translateX(0); /* Remove any transform that could cause animation */
   justify-content: flex-start; /* Align to left when chatbot is open */
 }
 
 /* Center filters when chatbot is NOT maximized */
 .filters-container {
   justify-content: center; /* Center by default */
-  transition: all 0.3s ease;
+  transition: width 0.3s ease, margin-right 0.3s ease; /* Only transition width and margin */
 }
 
 /* Adjust product grid layout when chatbot is maximized */
