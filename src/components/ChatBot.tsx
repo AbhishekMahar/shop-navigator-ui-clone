@@ -161,6 +161,7 @@ const ChatBot = ({ isOpen, onClose, onMaximizeChange }: ChatBotProps) => {
       </div>
       
       <div className="p-4 border-t bg-white">
+        {/* Moved suggestion buttons above the input field */}
         <div className="flex flex-wrap gap-2 mb-3">
           {suggestions.map((suggestion, index) => (
             <button
