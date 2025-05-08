@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from 'react';
 import { Search, MessagesSquare, Heart, ShoppingCart, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -67,8 +68,8 @@ const Header = ({ toggleChat }: HeaderProps) => {
             </button>
           )}
           
-          {/* Search suggestions - shown after 2.5 seconds when focused with no text */}
-          {showSuggestions && (
+          {/* Search suggestions - shown when focused with no text */}
+          {isFocused && searchText === '' && (
             <div className="absolute z-10 w-full mt-1 bg-white border rounded-md shadow-lg">
               <div className="px-3 py-2 text-sm text-gray-500 border-b">Popular searches</div>
               <div className="py-1">
