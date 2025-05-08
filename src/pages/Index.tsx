@@ -53,9 +53,11 @@ const Index = () => {
     <div className="min-h-screen bg-white">
       <Header toggleChat={toggleChat} />
       <Filters />
-      <div className={`max-w-[1800px] mx-auto transition-all duration-300 ${isChatMaximized ? 'pr-[380px]' : ''}`}>
-        <RelatedShops />
-        <Results />
+      <div className="max-w-[1800px] mx-auto transition-all duration-300">
+        <RelatedShops isChatMaximized={isChatMaximized} />
+        <div className={`transition-all duration-300 ${isChatMaximized ? 'mr-[380px]' : ''}`}>
+          <Results />
+        </div>
       </div>
       
       <ChatBot 

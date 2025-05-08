@@ -30,11 +30,11 @@ const ProductCard = ({ product }: { product: Product }) => {
           className="w-full h-full object-cover"
         />
         <div className="absolute bottom-2 right-2 flex flex-col gap-2">
-          <Button variant="outline" size="icon" className="h-8 w-8 bg-white rounded-full">
-            <Search className="h-4 w-4" />
+          <Button variant="outline" size="icon" className="h-7 w-7 bg-white rounded-full">
+            <Search className="h-3.5 w-3.5" />
           </Button>
-          <Button variant="outline" size="icon" className="h-8 w-8 bg-white rounded-full">
-            <Heart className="h-4 w-4" />
+          <Button variant="outline" size="icon" className="h-7 w-7 bg-white rounded-full">
+            <Heart className="h-3.5 w-3.5" />
           </Button>
         </div>
       </div>
