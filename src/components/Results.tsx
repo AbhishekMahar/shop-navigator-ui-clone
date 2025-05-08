@@ -227,9 +227,9 @@ const Results: React.FC<ResultsProps> = ({ isChatMaximized = false }) => {
   ];
 
   return (
-    <div className={`px-6 py-2 transition-all duration-300 ${isChatMaximized ? 'mr-[380px]' : ''}`}>
+    <div className={`py-6 transition-all duration-300 ${isChatMaximized ? 'mr-[380px]' : ''}`}>
       <h2 className="text-lg font-medium mb-4">Results</h2>
-      <div className={`product-grid grid gap-4 pb-6 ${
+      <div className={`product-grid grid gap-6 pb-6 ${
         isChatMaximized 
           ? 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4' 
           : 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6'
