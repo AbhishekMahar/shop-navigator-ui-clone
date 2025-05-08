@@ -108,6 +108,22 @@ body.chatbot-maximized .max-w-\[1800px\] {
   transition: all 0.3s ease;
 }
 
+/* Keep the header full width regardless of chatbot state */
+body.chatbot-maximized header {
+  width: 100% !important;
+  margin-right: 0 !important;
+  left: 0;
+  right: 0;
+  position: relative;
+}
+
+/* Adjust filters section when chatbot is maximized */
+body.chatbot-maximized .filters-container {
+  width: calc(100% - 380px);
+  padding-right: 16px;
+  transition: all 0.3s ease;
+}
+
 /* Adjust product grid layout when chatbot is maximized */
 body.chatbot-maximized .product-grid {
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -122,6 +138,10 @@ body.chatbot-maximized .product-grid {
 @media (max-width: 768px) {
   body.chatbot-maximized .max-w-\[1800px\] {
     margin-right: 0;
+    width: 100%;
+  }
+  
+  body.chatbot-maximized .filters-container {
     width: 100%;
   }
 }
