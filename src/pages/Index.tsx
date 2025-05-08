@@ -8,11 +8,22 @@ import ChatBot from "@/components/ChatBot";
 
 const Index = () => {
   const [isChatOpen, setIsChatOpen] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   const toggleChat = () => {
     setIsChatOpen(prevState => !prevState);
     console.log("Chat toggle clicked, new state:", !isChatOpen);
   };
+
+  // Track window resize for responsive behavior
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // Debug log to track state changes
   useEffect(() => {

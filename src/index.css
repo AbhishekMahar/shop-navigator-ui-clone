@@ -121,7 +121,7 @@ body.chatbot-maximized header {
 body.chatbot-maximized .filters-container {
   width: calc(100% - 380px);
   padding-right: 16px;
-  margin-right: 380px;
+  margin-right: 0;
   transition: all 0.3s ease;
 }
 
@@ -130,9 +130,14 @@ body.chatbot-maximized .product-grid {
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 }
 
+/* Responsive adjustments */
 @media (max-width: 1400px) {
   body.chatbot-maximized .product-grid {
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  }
+  
+  .filters-container {
+    flex-wrap: wrap;
   }
 }
 
@@ -145,5 +150,19 @@ body.chatbot-maximized .product-grid {
   body.chatbot-maximized .filters-container {
     width: 100%;
     margin-right: 0;
+  }
+  
+  .filters-container {
+    justify-content: center;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+}
+
+@media (max-width: 640px) {
+  .filters-container {
+    gap: 8px;
+    padding-left: 4px;
+    padding-right: 4px;
   }
 }
