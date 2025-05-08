@@ -1,7 +1,14 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { 
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselPrevious,
+  CarouselNext
+} from "@/components/ui/carousel";
 
 type Shop = {
   id: number;
@@ -13,8 +20,8 @@ type Shop = {
 
 const ShopCard = ({ shop }: { shop: Shop }) => {
   return (
-    <div className="min-w-[160px] max-w-[180px] p-2 rounded-lg hover:bg-gray-50 cursor-pointer">
-      <div className="h-32 bg-gray-100 rounded-lg mb-2 overflow-hidden">
+    <div className="min-w-[200px] max-w-[220px] p-2 rounded-lg hover:bg-gray-50 cursor-pointer transition-all duration-300">
+      <div className="h-40 bg-gray-100 rounded-lg mb-3 overflow-hidden">
         <img 
           src={shop.image} 
           alt={shop.name} 
@@ -34,13 +41,18 @@ const ShopCard = ({ shop }: { shop: Shop }) => {
 };
 
 const RelatedShops = () => {
+  const [currentPage, setCurrentPage] = useState(0);
+  const [api, setApi] = useState<any>(null);
+  const [canScrollPrev, setCanScrollPrev] = useState(false);
+  const [canScrollNext, setCanScrollNext] = useState(true);
+
   const shops: Shop[] = [
     {
       id: 1,
       name: "Amberjack",
       rating: 4.5,
       reviewCount: "6.9K",
-      image: "/placeholder.svg"
+      image: "/public/lovable-uploads/c2ca275b-2861-49ce-9236-bc7584fdb634.png"
     },
     {
       id: 2,
@@ -90,27 +102,128 @@ const RelatedShops = () => {
       rating: 4.5,
       reviewCount: "254",
       image: "/placeholder.svg"
+    },
+    {
+      id: 9,
+      name: "Foot Locker",
+      rating: 4.7,
+      reviewCount: "12.3K",
+      image: "/placeholder.svg"
+    },
+    {
+      id: 10,
+      name: "Aldo Shoes",
+      rating: 4.6,
+      reviewCount: "8.4K",
+      image: "/placeholder.svg"
+    },
+    {
+      id: 11,
+      name: "Urban Outfitters",
+      rating: 4.3,
+      reviewCount: "5.6K",
+      image: "/placeholder.svg"
+    },
+    {
+      id: 12,
+      name: "Champs Sports",
+      rating: 4.4,
+      reviewCount: "3.2K",
+      image: "/placeholder.svg"
+    },
+    {
+      id: 13,
+      name: "Nike Store",
+      rating: 4.9,
+      reviewCount: "15.7K",
+      image: "/placeholder.svg"
+    },
+    {
+      id: 14,
+      name: "Adidas Originals",
+      rating: 4.7,
+      reviewCount: "9.8K",
+      image: "/placeholder.svg"
+    },
+    {
+      id: 15,
+      name: "DSW",
+      rating: 4.2,
+      reviewCount: "7.5K",
+      image: "/placeholder.svg"
     }
   ];
 
+  useEffect(() => {
+    if (!api) return;
+
+    const onSelect = () => {
+      setCanScrollPrev(api.canScrollPrev());
+      setCanScrollNext(api.canScrollNext());
+    };
+    
+    api.on("select", onSelect);
+    
+    // Call onSelect immediately to set initial state
+    onSelect();
+
+    return () => {
+      api.off("select", onSelect);
+    };
+  }, [api]);
+
+  const handlePrevious = () => {
+    if (!canScrollPrev) return;
+    api?.scrollPrev();
+  };
+
+  const handleNext = () => {
+    if (!canScrollNext) return;
+    api?.scrollNext();
+  };
+
   return (
     <div className="px-6 py-2">
-      <div className="flex justify-between items-center mb-2">
+      <div className="flex justify-between items-center mb-4">
         <h2 className="text-lg font-medium">Related shops</h2>
         <div className="flex gap-1">
-          <Button variant="outline" size="icon" className="h-8 w-8 rounded-full border-gray-300">
+          <Button 
+            variant="outline" 
+            size="icon" 
+            className={`h-8 w-8 rounded-full border-gray-300 ${!canScrollPrev ? 'opacity-50 cursor-not-allowed' : ''}`}
+            onClick={handlePrevious}
+            disabled={!canScrollPrev}
+          >
             <ChevronLeft className="h-4 w-4" />
           </Button>
-          <Button variant="outline" size="icon" className="h-8 w-8 rounded-full border-gray-300">
+          <Button 
+            variant="outline" 
+            size="icon" 
+            className={`h-8 w-8 rounded-full border-gray-300 ${!canScrollNext ? 'opacity-50 cursor-not-allowed' : ''}`}
+            onClick={handleNext}
+            disabled={!canScrollNext}
+          >
             <ChevronRight className="h-4 w-4" />
           </Button>
         </div>
       </div>
-      <div className="flex gap-2 overflow-x-auto pb-2">
-        {shops.map(shop => (
-          <ShopCard key={shop.id} shop={shop} />
-        ))}
-      </div>
+
+      <Carousel
+        setApi={setApi}
+        className="w-full"
+        opts={{
+          align: "start",
+          loop: false,
+        }}
+      >
+        <CarouselContent className="-ml-2">
+          {shops.map((shop) => (
+            <CarouselItem key={shop.id} className="pl-2 basis-auto">
+              <ShopCard shop={shop} />
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+      </Carousel>
     </div>
   );
 };
