@@ -20,8 +20,8 @@ type Shop = {
 
 const ShopCard = ({ shop }: { shop: Shop }) => {
   return (
-    <div className="min-w-[200px] max-w-[220px] p-2 rounded-lg hover:bg-gray-50 cursor-pointer transition-all duration-300">
-      <div className="h-40 bg-gray-100 rounded-lg mb-3 overflow-hidden">
+    <div className="min-w-[240px] max-w-[260px] p-2 rounded-lg hover:bg-gray-50 cursor-pointer transition-all duration-300">
+      <div className="h-48 bg-gray-100 rounded-lg mb-3 overflow-hidden">
         <img 
           src={shop.image} 
           alt={shop.name} 
@@ -183,7 +183,7 @@ const RelatedShops = () => {
   };
 
   return (
-    <div className="px-6 py-2">
+    <div className="px-6 py-2 transition-all duration-300">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-lg font-medium">Related shops</h2>
         <div className="flex gap-1">

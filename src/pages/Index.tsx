@@ -28,13 +28,20 @@ const Index = () => {
   // Debug log to track state changes
   useEffect(() => {
     console.log("Chat state updated:", isChatOpen);
+
+    // Add or remove class from body based on chat state
+    if (isChatOpen) {
+      document.body.classList.add('chat-open');
+    } else {
+      document.body.classList.remove('chat-open');
+    }
   }, [isChatOpen]);
 
   return (
     <div className="min-h-screen bg-white">
       <Header toggleChat={toggleChat} />
       <Filters />
-      <div className="max-w-[1800px] mx-auto transition-all duration-300">
+      <div className={`max-w-[1800px] mx-auto transition-all duration-300 ${isChatOpen ? 'pr-[380px]' : ''}`}>
         <RelatedShops />
         <Results />
       </div>
