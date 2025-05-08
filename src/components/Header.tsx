@@ -90,13 +90,13 @@ const Header = ({ toggleChat }: HeaderProps) => {
           className="rounded-full hover:bg-white/10"
           onClick={toggleChat}
         >
-          <MessagesSquare className="h-6 w-6 text-shop-purple" />
+          <MessagesSquare className="h-7.5 w-7.5 text-shop-purple" />
         </Button>
         <Button variant="ghost" size="icon" className="rounded-full hover:bg-white/10">
-          <Heart className="h-6 w-6 text-shop-purple" />
+          <Heart className="h-7.5 w-7.5 text-shop-purple" />
         </Button>
         <Button variant="ghost" size="icon" className="rounded-full hover:bg-white/10">
-          <ShoppingCart className="h-6 w-6 text-shop-purple" />
+          <ShoppingCart className="h-7.5 w-7.5 text-shop-purple" />
         </Button>
         <Button 
           className="bg-shop-purple hover:bg-shop-purple/90 text-white rounded-full px-6 py-1 h-9"

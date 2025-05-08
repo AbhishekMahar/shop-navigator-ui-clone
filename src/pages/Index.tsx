@@ -52,7 +52,9 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-white">
       <Header toggleChat={toggleChat} />
-      <Filters />
+      <div className="filters-container pt-16"> {/* Added padding-top to position below fixed header */}
+        <Filters />
+      </div>
       <div className="max-w-[1800px] mx-auto">
         <RelatedShops isChatMaximized={isChatMaximized} />
         <Results isChatMaximized={isChatMaximized} />

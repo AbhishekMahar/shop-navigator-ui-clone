@@ -102,3 +102,12 @@
 .animate-slide-in-from-left {
   animation: slide-in-from-left 0.3s ease-out forwards;
 }
+
+/* Add custom size for icons */
+.h-7\.5 {
+  height: 1.875rem; /* 30px */
+}
+
+.w-7\.5 {
+  width: 1.875rem; /* 30px */
+}
