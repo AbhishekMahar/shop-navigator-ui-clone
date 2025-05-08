@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { X, Send, Bot, Maximize, Minimize } from 'lucide-react';
+import { X, Send, Bot, Maximize, Minimize, ThumbsUp, ThumbsDown } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 
 type MessageType = {
@@ -17,6 +17,14 @@ type ChatBotProps = {
 };
 
 const Message = ({ message }: { message: MessageType }) => {
+  const handleThumbsUp = () => {
+    console.log('Feedback: Thumbs up for message', message.id);
+  };
+
+  const handleThumbsDown = () => {
+    console.log('Feedback: Thumbs down for message', message.id);
+  };
+
   return (
     <div className={`flex mb-4 ${message.sender === 'bot' ? 'justify-start' : 'justify-end'}`}>
       {message.sender === 'bot' && (
@@ -24,12 +32,31 @@ const Message = ({ message }: { message: MessageType }) => {
           <Bot className="h-4 w-4" />
         </div>
       )}
-      <div className={`max-w-xs p-3 rounded-lg ${
-        message.sender === 'bot' 
-          ? 'bg-gray-100 text-black' 
-          : 'bg-[#9b87f5] text-white'
-      }`}>
-        <p className="text-sm">{message.text}</p>
+      <div className={`flex flex-col max-w-xs`}>
+        <div className={`p-3 rounded-lg ${
+          message.sender === 'bot' 
+            ? 'bg-gray-100 text-black' 
+            : 'bg-[#9b87f5] text-white'
+        }`}>
+          <p className="text-sm">{message.text}</p>
+        </div>
+        
+        {message.sender === 'bot' && (
+          <div className="flex mt-1 gap-2">
+            <button 
+              onClick={handleThumbsUp}
+              className="p-1 hover:bg-gray-100 rounded-full"
+            >
+              <ThumbsUp className="h-4 w-4 text-gray-500" />
+            </button>
+            <button 
+              onClick={handleThumbsDown}
+              className="p-1 hover:bg-gray-100 rounded-full"
+            >
+              <ThumbsDown className="h-4 w-4 text-gray-500" />
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
@@ -41,7 +68,7 @@ const ChatBot = ({ isOpen, onClose, onMaximizeChange }: ChatBotProps) => {
   const [messages, setMessages] = useState<MessageType[]>([
     {
       id: 1,
-      text: 'What type of shoes are you looking for? Are you interested in sneakers, dress shoes, sandals, or something else?',
+      text: 'Hi there! I can help you find the perfect shoes. What type are you looking for today?',
       sender: 'bot',
       timestamp: new Date()
     }
@@ -81,17 +108,9 @@ const ChatBot = ({ isOpen, onClose, onMaximizeChange }: ChatBotProps) => {
 
     // Simulate bot response after a delay
     setTimeout(() => {
-      let botResponse;
-      if (inputValue.toLowerCase().includes('sneaker') || 
-          inputValue.toLowerCase().includes('running')) {
-        botResponse = "Great choice! Do you have a specific color or style in mind for the sneakers?";
-      } else {
-        botResponse = "I found some options for you. Is there a particular brand or feature you're looking for in your shoes?";
-      }
-      
       const newBotMessage: MessageType = {
         id: messages.length + 2,
-        text: botResponse,
+        text: 'Connect me to backend first',
         sender: 'bot',
         timestamp: new Date()
       };
@@ -105,9 +124,15 @@ const ChatBot = ({ isOpen, onClose, onMaximizeChange }: ChatBotProps) => {
     console.log("Chatbot maximized state:", !isMaximized);
   };
 
+  const handleSuggestionClick = (suggestion: string) => {
+    setInputValue(suggestion);
+  };
+
   if (!visible) {
     return null;
   }
+
+  const suggestions = ['Sneakers', 'Running shoes', 'Sandals', 'Boots', 'Flip-flops', 'Heels'];
 
   return (
     <div 
@@ -130,18 +155,23 @@ const ChatBot = ({ isOpen, onClose, onMaximizeChange }: ChatBotProps) => {
       </div>
       
       <div className={`p-4 overflow-y-auto flex flex-col ${isMaximized ? 'h-[calc(100vh-10rem-72px)]' : 'max-h-96'}`}>
-        <div className="py-2 px-4 bg-gray-100 rounded-md mb-4">
-          <div className="flex items-center justify-between">
-            <span className="text-sm text-gray-500">+4 filters</span>
-          </div>
-        </div>
-        
         {messages.map(message => (
           <Message key={message.id} message={message} />
         ))}
       </div>
       
       <div className="p-4 border-t bg-white">
+        <div className="flex flex-wrap gap-2 mb-3">
+          {suggestions.map((suggestion, index) => (
+            <button
+              key={index}
+              onClick={() => handleSuggestionClick(suggestion)}
+              className="px-3 py-1 text-xs rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600"
+            >
+              {suggestion}
+            </button>
+          ))}
+        </div>
         <div className="relative flex items-center">
           <input 
             type="text"
@@ -158,14 +188,6 @@ const ChatBot = ({ isOpen, onClose, onMaximizeChange }: ChatBotProps) => {
             className="absolute right-1 h-7 w-7"
           >
             <Send className="h-4 w-4 text-[#9b87f5]" />
-          </Button>
-        </div>
-        <div className="flex justify-between mt-2">
-          <Button variant="ghost" size="sm" className="text-xs h-6 text-[#9b87f5]">
-            Customize more
-          </Button>
-          <Button size="sm" className="text-xs h-6 bg-[#9b87f5] hover:bg-[#7E69AB]">
-            Getting Started
           </Button>
         </div>
       </div>
