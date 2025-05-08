@@ -121,6 +121,7 @@ body.chatbot-maximized header {
 body.chatbot-maximized .filters-container {
   width: calc(100% - 380px);
   padding-right: 16px;
+  margin-right: 380px;
   transition: all 0.3s ease;
 }
 
@@ -143,5 +144,6 @@ body.chatbot-maximized .product-grid {
   
   body.chatbot-maximized .filters-container {
     width: 100%;
+    margin-right: 0;
   }
 }
